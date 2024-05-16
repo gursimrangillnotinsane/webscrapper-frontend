@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* html styles */
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    font-size: 100%;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    background-image: url("../src/assets/wallpaperflare.com_wallpaper\ \(2\).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+table {
+    margin: 3rem;
+    margin-top: 0;
+    border-collapse: collapse;
+    text-align: center;
+    table-layout: fixed;
+    width: 95%;
+    background-color: rgba(16, 90, 107, 0.768);
+    font-family: monospace;
+    font-size: 1rem;
+
+}
+
+
+
+details {
+    background-color: rgba(10, 58, 64, 0.759);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.25rem;
+    padding: 3px;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin: 20px;
+    text-shadow: -2px 2px 4px black;
+}
+
+
+a {
+    color: rgb(141, 251, 67)
+}
+
+details[open] {
+    background-color: rgba(152, 165, 149, 0.734);
+    /* border-top: 2px solid white; */
+}
+
+td,
+th {
+    border: 2px solid rgb(186, 180, 180);
+    padding: 10px;
+
+}
+
+th {
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-style: italic;
+    background-color: rgba(6, 34, 52, 0.527);
+    text-shadow: -2px 2px 2px black;
+}
+
+button {
+    background-color: rgba(106, 29, 96, 0.575);
+    align-self: center;
+    padding: 3px 10px;
+    margin-top: 9px;
+    color: white;
+    width: 10%;
+    height: 50px;
+    font-size: 1.2rem;
+}
+
+select {
+    margin: 10px 10px 0 10px;
+    background-color: rgba(16, 16, 16, 0.94);
+    color: white;
+    font-size: 1.25rem;
+}
+
+summary::marker {
+    content: ''
+
+}
+
+details[open] summary {
+    pointer-events: none;
+    /* prevents click events */
+    user-select: none;
+    /* prevents text selection */
+}
+
+summary {
+    margin: 15px
+}
+
+input {
+    margin: 10px 10px 0 10px;
+    width: 250px;
+    padding: 0 0 10px 10px;
+    background-color: rgba(22, 21, 19, 0.94);
+    color: white;
+    border: none;
+    font-size: 2.25rem;
+}

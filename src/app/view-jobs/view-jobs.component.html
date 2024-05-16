@@ -1,0 +1,166 @@
+<div class="wrapper">
+    <div class="input">
+        <div id="contain">
+            <input [(ngModel)]="searchList.skill" name="title"
+                placeholder="programming" type="text" autocomplete="on">
+            <br>
+            <select [(ngModel)]="searchList.location" name="cars"
+                id="cars">
+
+                <option value="	NL">Newfoundland and Labrador</option>
+                <option value="PE">Prince Edward Island</option>
+                <option value="NS">Nova Scotia </option>
+                <option value="NB">New Brunswick</option>
+                <option value="QC">Quebec</option>
+                <option value="ON">Ontario</option>
+                <option value="MB">Manitoba</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="AB">Alberta</option>
+                <option value="BC">British Columbia</option>
+                <option value="YT">Yukon</option>
+                <option value="NT">Northwest Territories</option>
+                <option value="NU">Nunavut</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <button id="mainbutton" (click)="searchAll()">Search</button>
+    </div>
+    <div id="loader">
+        <div class="loader"></div>
+    </div>
+    <div class="result" id="result">
+        <div>
+            <details style="   margin-left: 3rem;">
+                <summary>All Jobs</summary>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Title</th>
+                                <th>Salary</th>
+                                <th>Date/Place</th>
+                            </tr>
+                        </thead>
+                        <!-- <tbody *ngFor="let results of result"> -->
+                        <tr *ngFor="let value of result">
+                            <td>{{value[0]}}</td>
+                            <td style="width:50%"><a
+                                    [href]="sanitizeUrl(value[2])"
+                                    target="_blank">{{value[1]}}</a></td>
+                            <td>{{value[3]}}</td>
+                            <td>{{value[4]}}</td>
+                        </tr>
+                        <!-- </tbody> -->
+                    </table>
+                    <button (click)="loadmoreMain()">Load More</button>
+                </div>
+            </details>
+        </div>
+        <!-- <div>
+            <details>
+                <summary>Indeed jobs </summary>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Title</th>
+                                <th>Salary</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let results of resultIndeed">
+                            <tr *ngFor="let value of results">
+                                <td>{{value[0]}}</td>
+                                <td style="width:50%"><a
+                                        [href]="sanitizeUrl(value[2])"
+                                        target="_blank">{{value[1]}}</a></td>
+                                <td>{{value[3]}}</td>
+                                <td>{{value[4]}}</td>
+                                <td [colSpan]="4"><button
+                                        (click)=" searchIndeedMore()">Load
+                                        More</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </details>
+        </div> -->
+        <div>
+            <details>
+                <summary>Linkdin jobs </summary>
+                <div class="table">
+                    <div id="resultShowLinkdin">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Title</th>
+                                    <th>Salary</th>
+                                    <th>Place</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablebody"
+                                *ngFor="let results of resultLinkdin">
+                                <tr *ngFor="let value of results">
+
+                                    <td>{{value[0]}}</td>
+                                    <td style="width:50%"><a
+                                            [href]="sanitizeUrl(value[2])"
+                                            target="_blank">{{value[1]}}</a></td>
+                                    <td>{{value[3]}}</td>
+                                    <td>{{value[4]}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <button
+                            (click)=" searchLinkdinMore()">Load
+                            More</button>
+                    </div>
+                    <div id="nothingToShowLinkdin">
+                        <p>Nothing to Show</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+        <div>
+            <details>
+                <summary>Jobank jobs </summary>
+                <div class="table">
+                    <div id="resultShowJobank">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Title</th>
+                                    <th>Salary</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let results of resultJobank">
+                                <tr *ngFor="let value of results">
+
+                                    <td>{{value[0]}}</td>
+                                    <td style="width:50%"><a
+                                            [href]="sanitizeUrl(value[2])"
+                                            target="_blank">{{value[1]}}</a></td>
+                                    <td>{{value[3]}}</td>
+                                    <td>{{value[4]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button (click)=" searchJobankMore()">Load More</button>
+                    </div>
+                    <div id="nothingToShowJobank">
+                        <p>Nothing to Show</p>
+                    </div>
+                </div>
+
+            </details>
+        </div>
+    </div>
+</div>

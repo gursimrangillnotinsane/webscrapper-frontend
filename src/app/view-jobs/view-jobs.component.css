@@ -1,0 +1,62 @@
+.input {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#contain {
+    display: flex;
+}
+
+.result,
+#loader {
+    display: none;
+}
+
+.table {
+    position: absolute;
+    left: 0;
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: fit-content;
+    font-weight: bold;
+    text-align: center;
+    font-family: monospace;
+    font-size: 30px;
+    clip-path: inset(0 3ch 0 0);
+    animation: l4 1s steps(4) infinite;
+}
+
+.loader:before {
+    content: "Loading please wait..."
+}
+
+@keyframes l4 {
+    to {
+        clip-path: inset(0 -1ch 0 0)
+    }
+}
+
+#loader {
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+#nothingToShowLinkdin,
+#nothingToShowJobank {
+    font-size: 2rem;
+    color: red;
+    display: none;
+}

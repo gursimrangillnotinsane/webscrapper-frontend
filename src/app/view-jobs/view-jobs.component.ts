@@ -28,7 +28,7 @@ export class ViewJobsComponent {
   ) {
   }
 
-  searchList = { "skill": "", "location": "", "pagenumber": 0 }
+  searchList = { "skill": "", "location": "ON", "pagenumber": 0 }
 
   // page number
   indeedpage = 50
@@ -41,8 +41,14 @@ export class ViewJobsComponent {
   resultJobank: any = []
   result: any = []
 
+  ON: string = "Ontario"
+  isButtonDisabled: boolean = false;
+  isButtonDisabledLink: boolean = false;
+  isButtonDisabledJoBank: boolean = false;
+  isButtonDisabledSearch: boolean = false;
   // searches all
   searchAll() {
+    this.isButtonDisabledSearch = true
     var valid = this.errors()
     if (valid) {
       reset();
@@ -51,7 +57,7 @@ export class ViewJobsComponent {
       this.resultLinkdin = []
       this.resultJobank = []
       this.result = []
-      console.log("WRIGHT")
+
       this.sendSearchLinkdin().then(result => {
         if (result) {
           this.sendSearchJobank().then(result => {
@@ -64,16 +70,19 @@ export class ViewJobsComponent {
       });
     }
     else {
-      console.log("wrogn")
+
     }
+    this.isButtonDisabledSearch = false;
   }
 
   loadmoreMain() {
+    this.isButtonDisabled = true
     this.sendSearchLinkdin().then(result => {
       if (result) {
         this.sendSearchJobank().then(result => {
           if (result) {
             this.combineTwo()
+
           }
         })
       }
@@ -106,15 +115,14 @@ export class ViewJobsComponent {
       this.auth.LinkdinSearch(this.searchList)
         .subscribe({
           next: (res: any) => {
-            if (res == null) {
-              console.log("No input")
+            if (res.length == 0) {
+              console.log("HERE")
               linkdinres();
             }
             this.resultLinkdin.push(res);
             resolve(true); // Resolve the promise with true once the operation is complete
           },
           error: (err) => {
-            console.error(err);
             resolve(false); // Resolve the promise with false if there's an error
           }
         });
@@ -127,16 +135,14 @@ export class ViewJobsComponent {
       this.auth.JobankSearch(this.searchList)
         .subscribe({
           next: (res: any) => {
-            console.log(res)
             if (res.length == 0) {
-              console.log("No input")
               jobankRes();
             }
             this.resultJobank.push(res);
             resolve(true); // Resolve the promise with true once the operation is complete
           },
           error: (err) => {
-            console.error(err);
+
             resolve(false); // Resolve the promise with false if there's an error
           }
         });
@@ -158,6 +164,7 @@ export class ViewJobsComponent {
 
 
   searchLinkdinMore(): Promise<boolean> {
+    this.isButtonDisabledLink = true
     return new Promise((resolve, reject) => {
       this.searchList.pagenumber = this.linkdinpage
       this.auth.LinkdinSearch(this.searchList)
@@ -165,10 +172,12 @@ export class ViewJobsComponent {
           next: (res) => {
             this.resultLinkdin.push(res)
             this.linkdinpage += 5
+            this.isButtonDisabledLink = false
             resolve(true);
           },
           error: (err) => {
             console.error(err);
+            this.isButtonDisabledLink = false
             resolve(false); // Resolve the promise with false if there's an error
           }
         });
@@ -176,6 +185,7 @@ export class ViewJobsComponent {
   }
 
   searchJobankMore(): Promise<boolean> {
+    this.isButtonDisabledJoBank = true
     return new Promise((resolve, reject) => {
       this.searchList.pagenumber = this.jobankpage
       this.auth.JobankSearch(this.searchList)
@@ -183,10 +193,13 @@ export class ViewJobsComponent {
           next: (res) => {
             this.resultJobank.push(res)
             this.jobankpage += 3
+            this.isButtonDisabledJoBank = false
+
             resolve(true);
           },
           error: (err) => {
             console.error(err);
+            this.isButtonDisabledJoBank = false
             resolve(false); // Resolve the promise with false if there's an error
           }
         })
@@ -207,7 +220,7 @@ export class ViewJobsComponent {
 
       // Add remaining elements from longer lists if any
       this.result.push(...this.resultJobank[j].slice(minLength), ...this.resultLinkdin[j].slice(minLength));
-
+      this.isButtonDisabled = false
     }
   }
 
@@ -226,10 +239,8 @@ export class ViewJobsComponent {
 
   errors() {
     if (this.searchList.skill.includes(' ')) {
-      console.log("String contains space");
       const words = this.searchList.skill.split(" ");
       if (words.length > 2) {
-        console.log("User input contains more than 2 words");
         errorsjs()
         return false
       } else {
@@ -244,5 +255,7 @@ export class ViewJobsComponent {
     return true
 
   }
+
+
 }
 

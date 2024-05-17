@@ -1,30 +1,10 @@
 
 
 function buttonclick() {
-    var input = document.getElementsByClassName("input")
-    console.log(input)
-    input[0].style.height = "90px";
-    // Create a new image element
-    var backgroundImage = new Image();
-
-    // Set the source of the image (background image URL)
-    // backgroundImage.src = "https://i.pinimg.com/originals/66/94/11/669411a8a3da9affd30c9f89364918f2.gif";
-
-    // Apply blur effect
-    backgroundImage.style.filter = "blur(3px)";
-    backgroundImage.style.position = "fixed";
-    backgroundImage.style.size = "cover"
-    backgroundImage.style.top = "0";
-    backgroundImage.style.left = "0";
-    backgroundImage.style.width = "105%";
-    backgroundImage.style.height = "105vh";
-    backgroundImage.style.zIndex = "-1";
-
-    // Append the image element to the body
-    document.body.appendChild(backgroundImage);
+    var input = document.getElementsByClassName("main")
+    input[0].style.height = "150px";
     var details = document.getElementsByTagName("details")
     details[0].open = true;
-
 }
 
 var details = document.getElementsByTagName("details")
@@ -83,5 +63,37 @@ function reset() {
     tableJobank.style.display = "block"
 
     loader.style.display = "flex"
+    tables.style.display = "none"
 
+}
+
+
+
+const nav = document.querySelector("details");
+let navTop = nav.offsetTop;
+const topButton = document.querySelector(" a.top");
+const pullQuote = document.querySelectorAll(".pullquote");
+window.addEventListener("scroll", function () {
+
+    if (window.scrollY > navTop) {
+        nav.classList.add("floater");
+        topButton.style.visibility = "visible";
+    } else {
+        nav.classList.remove("floater");
+        topButton.style.visibility = "hidden";
+    }
+});
+
+topButton.addEventListener("click", function (event) {
+    scrollToTop();
+    event.preventDefault();
+});
+
+
+function scrollToTop() {
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+    });
 }

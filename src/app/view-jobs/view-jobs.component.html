@@ -1,37 +1,44 @@
 <div class="wrapper">
-    <div class="input">
-        <div id="contain">
-            <input [(ngModel)]="searchList.skill" name="title"
-                placeholder="programming" type="text" autocomplete="on">
-            <br>
-            <select [(ngModel)]="searchList.location" name="cars"
-                id="cars">
-
-                <option value="	NL">Newfoundland and Labrador</option>
-                <option value="PE">Prince Edward Island</option>
-                <option value="NS">Nova Scotia </option>
-                <option value="NB">New Brunswick</option>
-                <option value="QC">Quebec</option>
-                <option value="ON">Ontario</option>
-                <option value="MB">Manitoba</option>
-                <option value="SK">Saskatchewan</option>
-                <option value="AB">Alberta</option>
-                <option value="BC">British Columbia</option>
-                <option value="YT">Yukon</option>
-                <option value="NT">Northwest Territories</option>
-                <option value="NU">Nunavut</option>
-            </select>
+    <div class="main">
+        <div>
+            <h1>JobFull</h1>
         </div>
-        <br>
-        <br>
-        <button id="mainbutton" (click)="searchAll()">Search</button>
+        <div class="input">
+
+            <br>
+            <div id="contain">
+                <input [(ngModel)]="searchList.skill" name="title"
+                    placeholder="programming" type="text" autocomplete="on">
+                <br>
+                <select [(ngModel)]="searchList.location" name="cars"
+                    id="cars" [value]="ON">
+                    <option value="NL">Newfoundland and Labrador</option>
+                    <option value="PE">Prince Edward Island</option>
+                    <option value="NS">Nova Scotia </option>
+                    <option value="NB">New Brunswick</option>
+                    <option value="QC">Quebec</option>
+                    <option value="ON">Ontario</option>
+                    <option value="MB">Manitoba</option>
+                    <option value="SK">Saskatchewan</option>
+                    <option value="AB">Alberta</option>
+                    <option value="BC">British Columbia</option>
+                    <option value="YT">Yukon</option>
+                    <option value="NT">Northwest Territories</option>
+                    <option value="NU">Nunavut</option>
+                </select>
+            </div>
+            <br>
+            <br>
+            <button id="mainbutton" [disabled]="isButtonDisabledSearch"
+                (click)="searchAll()">Search</button>
+        </div>
     </div>
     <div id="loader">
         <div class="loader"></div>
     </div>
     <div class="result" id="result">
         <div>
-            <details style="   margin-left: 3rem;">
+            <details id="firstAllJobs">
                 <summary>All Jobs</summary>
                 <div class="table">
                     <table>
@@ -54,7 +61,8 @@
                         </tr>
                         <!-- </tbody> -->
                     </table>
-                    <button (click)="loadmoreMain()">Load More</button>
+                    <button [disabled]="isButtonDisabled"
+                        (click)="loadmoreMain()">Load More</button>
                 </div>
             </details>
         </div>
@@ -117,7 +125,7 @@
 
                             </tbody>
                         </table>
-                        <button
+                        <button [disabled]="isButtonDisabledLink"
                             (click)=" searchLinkdinMore()">Load
                             More</button>
                     </div>
@@ -153,7 +161,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button (click)=" searchJobankMore()">Load More</button>
+                        <button [disabled]="isButtonDisabledJoBank"
+                            (click)=" searchJobankMore()">Load More</button>
                     </div>
                     <div id="nothingToShowJobank">
                         <p>Nothing to Show</p>
@@ -163,4 +172,8 @@
             </details>
         </div>
     </div>
+    <p><a href="#" title="Back to top" class="top"><img
+                src="https://raw.githubusercontent.com/smccrindle/comp1054-24w/4dad0702f88010cc325713a1eca871a1fb2f2e82/lesson-9/images/arrows.svg"
+                width="25" height="25" /></a></p>
+
 </div>

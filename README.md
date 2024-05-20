@@ -1,27 +1,9 @@
 # AngularWebScrapping
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.1.
+An easy way to look for jobs from different sites.
 
-## Development server
+## Photos
+![image](https://github.com/gursimrangillnotinsane/webscrapper-frontend/assets/132660017/7924fa55-5388-46e9-81db-d2e3aa3f33d3)
+![image](https://github.com/gursimrangillnotinsane/webscrapper-frontend/assets/132660017/8df424a4-25d2-4319-8fe1-5cadc97b7337)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
